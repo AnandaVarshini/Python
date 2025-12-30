@@ -1,0 +1,18 @@
+from datetime import datetime
+
+def time_delta(t1, t2):
+    format_str = "%a %d %b %Y %H:%M:%S %z"
+    
+    dt1 = datetime.strptime(t1, format_str)
+    dt2 = datetime.strptime(t2, format_str)
+    
+    return abs(int((dt1 - dt2).total_seconds()))
+
+
+# Input handling
+t = int(input().strip())
+
+for _ in range(t):
+    t1 = input().strip()
+    t2 = input().strip()
+    print(time_delta(t1, t2))
