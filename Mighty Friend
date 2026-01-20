@@ -1,0 +1,29 @@
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    motu = []
+    tomu = []
+    for i in range(n):
+        if i % 2 == 0:
+            motu.append(a[i])
+        else:
+            tomu.append(a[i])
+    motu.sort(reverse=True)
+    tomu.sort()
+
+    for i in range(min(len(motu), len(tomu))):
+        if tomu[i] < motu[i] and k > 0:
+            tomu[i], motu[i] = motu[i], tomu[i]
+            k -= 1
+
+    motu_score = sum(motu)
+    tomu_score = sum(tomu)
+
+    if tomu_score > motu_score:
+        print('YES')
+    else:
+        print('NO')
+
+t = int(input())
+for _ in range(t):
+    solve()
